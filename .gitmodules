@@ -1,0 +1,6 @@
+[submodule "Variskill-backend"]
+	path = Variskill-backend
+	url = https://github.com/SkyFlyTeam/Variskill-backend.git
+[submodule "VariSkill-frontend"]
+	path = VariSkill-frontend
+	url = https://github.com/SkyFlyTeam/VariSkill-frontend.git
