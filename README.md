@@ -56,7 +56,7 @@ A jornada pedagógica organiza-se em trilhas, divididas em módulos sequenciais 
 | RFN | Rank | Prioridade | User Story | Estimativa | Sprint | Critérios de Aceitação |
 |-----|------|------------|------------|------------|--------|------------------------|
 | RFN01 | 1 | Alta | Como usuário, quero me cadastrar e gerenciar meu perfil, para que minhas informações e preferências de estudo fiquem registradas. | 5 | 1 | - Formulário de cadastro com nome, e-mail e senha;<br>- E-mail único no sistema;<br>- Edição de perfil para alteração de nome e senha;<br>- Dados devidamente persistidos. |
-| RFN02 | 2 | Alta | Como novo usuário, quero ser acolhido pelo assistente virtual no primeiro login, para que ele apresente as trilhas e entenda meu objetivo inicial. | 5 | 1 | - Abertura automática do chat no primeiro acesso;<br>- Apresentação amigável do assistente;<br>- Listagem das trilhas/cursos disponíveis via conversação;<br>- Identificação da trilha escolhida pelo usuário via diálogo. |
+| RFN02 | 2 | Alta | Como novo usuário, quero ser acolhido pelo assistente virtual no primeiro login, para que ele apresente as trilhas e entenda meu objetivo inicial. | 5 | 1 | - Apresentação amigável do assistente;<br>- Listagem das trilhas/cursos disponíveis via conversação;<br>- Identificação da trilha escolhida pelo usuário via diálogo. |
 | RFN03 | 3 | Alta | Como usuário, quero definir com o assistente se farei um teste prático ou se começarei do início, para que minha trilha seja configurada no nível certo. | 5 | 1 | - Assistente questiona sobre conhecimento prévio;<br>- Se optar por começar do início, usuário é matriculado no nível básico com mensagem motivacional;<br>- Se declarar nível (ex: intermediário), assistente dispara a bateria de teste prático na UI. |
 | RFN04 | 4 | Alta | Como usuário, quero acessar conteúdos conceituais e realizar atividades práticas, para que eu adquira a base teórica e valide meu aprendizado com testes de nível. | 8 | 1 | - Interface exibe o texto explicativo/teórico em Markdown com exemplos de código antes das atividades;<br>- Interface renderiza questões dos 3 formatos (múltipla escolha, complete o código e ordenar blocos);<br>- Registro das submissões do usuário com correção determinística;<br>- Se for teste de nível: validação da nota de corte para posicionar no nível de conhecimento correspondente e liberar os módulos no PROGRESSO_MODULO. |
 | RFN06 | 5 | Alta | Como usuário em atividade, quero consultar o assistente virtual via chat, para que ele tire dúvidas conceituais sem dar a resposta direta. | 5 | 1 | - Acesso ao chat integrado na tela da atividade ativa;<br>- Assistente consulta primeiro a base local de dicas daquela atividade (DICA_CONCEITUAL);<br>- Fallback para IA externa com prompt contextualizado no enunciado caso não haja match local;<br>- Mensagem amigável caso a IA fique indisponível. |
@@ -81,7 +81,7 @@ O desenvolvimento segue o cronograma acadêmico oficial da Fatec São José dos 
 
 | Sprint | Período oficial | Status |
 |:---:|:---:|:---|
-| 01 | 07/09/2026 a 27/09/2026 | Em andamento |
+| 01 | 07/09/2026 a 27/09/2026 | ✅ OK |
 | 02 | 05/10/2026 a 25/10/2026 | A iniciar |
 | 03 | 02/11/2026 a 22/11/2026 | A iniciar |
 
@@ -103,6 +103,115 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias são utilizadas 
 | **Banco de dados** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) |
 | **Front-End** | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) |
 | **Design e Gestão** | ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) ![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white) |
+
+<br>
+
+---
+
+<span id="estrutura">
+
+# 🏗️ Arquitetura
+
+### Arquitetura Sistema
+<p align="center">
+  <img src="./mgt/arquitetura_sistema.svg" alt="Arquitetura do Sistema" width="100%">
+</p>
+
+### Arquitetura Pipeline PLN
+<p align="center">
+  <img src="./mgt/pipeline_pln.png" alt="Pipeline de PLN" width="60%">
+</p>
+
+<br>
+
+## 🚀 Como executar o projeto
+
+Você pode executar o projeto utilizando o **Docker Compose** (recomendado para subir ambiente completo) ou em **modo de desenvolvimento local**.
+
+### Pré-requisitos
+- [Git](https://git-scm.com/downloads)
+- [Docker & Docker Compose v2+](https://www.docker.com/products/docker-desktop/) (Recomendado)
+- Para desenvolvimento local sem Docker:
+  - [Python 3.12+](https://www.python.org/)
+  - [Node.js 20+](https://nodejs.org/)
+  - [PostgreSQL 15+](https://www.postgresql.org/) com a extensão `pgvector` instalada.
+
+---
+
+### Opção 1: Execução com Docker (Ambiente Completo - Recomendado)
+
+1. **Clone os repositórios:**
+   ```bash
+   git clone https://github.com/SkyFlyTeam/Variskill-backend.git
+   git clone https://github.com/SkyFlyTeam/VariSkill-frontend.git
+   ```
+
+2. **Inicie o Backend (PostgreSQL + PgVector + Django/Uvicorn):**
+   Na pasta do `Variskill-backend`:
+   ```bash
+   docker compose -f docker-compose-build.yaml up -d --build
+   ```
+
+3. **Popule o banco de dados (Apenas na 1ª execução):**
+   ```bash
+   docker compose -f docker-compose-build.yaml exec app python manage.py createsuperuser
+   docker compose -f docker-compose-build.yaml exec app python manage.py seed_intencoes
+   docker compose -f docker-compose-build.yaml exec app python seed_catalogo_completo.py
+   ```
+
+4. **Inicie o Frontend (Vite):**
+   Na pasta do `VariSkill-frontend`:
+   ```bash
+   docker compose -f docker-compose-build.yaml up -d --build
+   ```
+
+5. **Acesse no navegador:**
+   - **Aplicação (Frontend + API Proxy):** [http://localhost:8080](http://localhost:8080)
+   - **Documentação Swagger (API):** [http://localhost:8080/api/docs/](http://localhost:8080/api/docs/)
+   - **Django Admin:** [http://localhost:8080/admin/](http://localhost:8080/admin/)
+
+---
+
+### Opção 2: Execução Local para Desenvolvimento (Sem Docker)
+
+#### 1. Backend (Django)
+Na pasta `Variskill-backend`:
+- Crie e ative um ambiente virtual Python:
+  ```bash
+  python -m venv .venv
+  # Windows (PowerShell):
+  .\.venv\Scripts\Activate.ps1
+  # Linux/macOS:
+  source .venv/bin/activate
+  ```
+- Instale as dependências:
+  ```bash
+  pip install uv
+  uv sync
+  ```
+- Configure as variáveis de ambiente no arquivo `.env` (com base no `.env.example`).
+- Execute as migrations e carregue os dados iniciais:
+  ```bash
+  python manage.py migrate
+  python manage.py seed_intencoes
+  python seed_catalogo_completo.py
+  ```
+- Inicie o servidor do backend:
+  ```bash
+  python manage.py runserver
+  ```
+
+#### 2. Frontend (React + Vite)
+Na pasta `VariSkill-frontend`:
+- Instale as dependências:
+  ```bash
+  npm install
+  ```
+- Inicie o servidor de desenvolvimento:
+  ```bash
+  npm run dev
+  ```
+- Acesse a aplicação no endereço indicado pelo Vite (geralmente [http://localhost:5173](http://localhost:5173)).
 
 <br>
 
