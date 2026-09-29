@@ -85,13 +85,6 @@ O desenvolvimento segue o cronograma acadêmico oficial da Fatec São José dos 
 | 02 | 05/10/2026 a 25/10/2026 | A iniciar | - |
 | 03 | 02/11/2026 a 22/11/2026 | A iniciar | - |
 
-### Burndown Chart - Sprint 01
-
-<p align="center">
-  <img src="./mgt/burndown_sprint01.png" alt="Burndown Chart da Sprint 01" width="80%">
-</p>
-
-
 <br>
 
 ---
