@@ -82,7 +82,7 @@ O desenvolvimento segue o cronograma acadêmico oficial da Fatec São José dos 
 | Sprint | Período oficial | Status | Histórico |
 |:---:|:---:|:---|:---:|
 | 01 | 07/09/2026 a 27/09/2026 | ✅ OK | [Ver relatório](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint1) |
-| 02 | 05/10/2026 a 25/10/2026 | A iniciar | - |
+| 02 | 05/10/2026 a 25/10/2026 | ✅ OK | [Ver relatório](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint2) |
 | 03 | 02/11/2026 a 22/11/2026 | A iniciar | - |
 
 
@@ -114,12 +114,12 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias são utilizadas 
 
 ### Arquitetura Sistema
 <p align="center">
-  <img src="./mgt/arquitetura_sistema.svg" alt="Arquitetura do Sistema" width="100%">
+  <img src="./mgt/diagrama_atividade.png" alt="Arquitetura do Sistema" width="100%">
 </p>
 
 ### Arquitetura Pipeline PLN
 <p align="center">
-  <img src="./mgt/pipeline_pln.png" alt="Pipeline de PLN" width="60%">
+  <img src="./mgt/pipeline_atividade.png" alt="Pipeline de PLN" width="60%">
 </p>
 
 <br>
