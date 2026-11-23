@@ -83,7 +83,21 @@ O desenvolvimento segue o cronograma acadêmico oficial da Fatec São José dos 
 |:---:|:---:|:---|:---:|
 | 01 | 07/09/2026 a 27/09/2026 | ✅ OK | [Ver relatório](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint1) |
 | 02 | 05/10/2026 a 25/10/2026 | ✅ OK | [Ver relatório](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint2) |
-| 03 | 02/11/2026 a 22/11/2026 | A iniciar | - |
+| 03 | 02/11/2026 a 22/11/2026 | ✅ OK | [Ver relatório](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint3) |
+
+### Calendário de marcos acadêmicos:
+- **Início das Aulas:** 03/08/2026
+- **Kick-off geral:** 24/08/2026 a 28/08/2026
+- **Construção do Backlog de Produto / Planning:** 31/08/2026 a 04/09/2026
+- **Sprint 1:** 07/09/2026 a 27/09/2026
+- **Sprint Review / Planning:** 28/09/2026 a 02/10/2026
+- **Sprint 2:** 05/10/2026 a 25/10/2026
+- **Sprint Review / Planning:** 26/10/2026 a 30/10/2026
+- **Sprint 3:** 02/11/2026 a 22/11/2026
+- **Sprint Review:** 23/11/2026 a 27/11/2026
+- **Feira de Soluções:** 03/12/2026
+- **Apresentação de TGs:** 07/12/2026 a 11/12/2026
+- **Encerramento das Aulas:** 14/12/2026
 
 <br>
 
@@ -97,7 +111,7 @@ As seguintes ferramentas, linguagens, bibliotecas e tecnologias são utilizadas 
 
 | Camada | Tecnologias e bibliotecas |
 |---|---|
-| **Back-End** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) |
+| **Back-End** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) ![AWS S3](https://img.shields.io/badge/AWS_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white) |
 | **PLN e IA** | ![pgvector](https://img.shields.io/badge/pgvector-336791?style=for-the-badge&logo=postgresql&logoColor=white) |
 | **Banco de dados** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) |
 | **Front-End** | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) |
@@ -155,6 +169,7 @@ Você pode executar o projeto utilizando o **Docker Compose** (recomendado para 
    ```bash
    docker compose -f docker-compose-build.yaml exec app python manage.py createsuperuser
    docker compose -f docker-compose-build.yaml exec app python manage.py seed_intencoes
+   docker compose -f docker-compose-build.yaml exec app python manage.py seed_gamificacao
    docker compose -f docker-compose-build.yaml exec app python seed_catalogo_completo.py
    ```
 
@@ -193,6 +208,7 @@ Na pasta `Variskill-backend`:
   ```bash
   python manage.py migrate
   python manage.py seed_intencoes
+  python manage.py seed_gamificacao
   python seed_catalogo_completo.py
   ```
 - Inicie o servidor do backend:
@@ -239,6 +255,22 @@ Uma User Story ou tarefa é considerada concluída na sprint quando:
 - **Sem quebra de regressão:** Funcionalidades anteriores continuam operando normalmente.
 - **Código revisado e padronizado:** Código aderente às diretrizes de clean code e PEP8 / ESLint.
 - **Documentação atualizada:** Relatório da sprint e documentações de suporte sincronizadas no repositório.
+
+<br>
+
+---
+
+<span id="links">
+
+# 🔗 Links úteis
+
+- **Repositórios da Aplicação:**
+  - 🔗 [Variskill-backend](https://github.com/SkyFlyTeam/Variskill-backend) — API REST em Django, Motor de Gamificação, PLN Vetorial (`pgvector`) e Storage S3
+  - 🔗 [VariSkill-frontend](https://github.com/SkyFlyTeam/VariSkill-frontend) — Interface Web Gamificada em React, TypeScript e Vite
+- **Releases por Sprint:**
+  - 📦 **Sprint 1 (07/09/2026 a 27/09/2026):** [Relatório Sprint 1](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint1) | [v1.0.0 Backend](https://github.com/SkyFlyTeam/Variskill-backend/releases/tag/v1.0.0) | [v1.0.0 Frontend](https://github.com/SkyFlyTeam/VariSkill-frontend/releases/tag/v1.0.0)
+  - 📦 **Sprint 2 (05/10/2026 a 25/10/2026):** [Relatório Sprint 2](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint2) | [v2.0.0 Backend](https://github.com/SkyFlyTeam/Variskill-backend/releases/tag/v2.0.0) | [v2.0.0 Frontend](https://github.com/SkyFlyTeam/VariSkill-frontend/releases/tag/v2.0.0)
+  - 📦 **Sprint 3 (02/11/2026 a 22/11/2026):** [Relatório Sprint 3](https://github.com/SkyFlyTeam/VariSkill-documentantion/tree/sprint3) | [v3.0.0 Backend](https://github.com/SkyFlyTeam/Variskill-backend/releases/tag/v3.0.0) | [v3.0.0 Frontend](https://github.com/SkyFlyTeam/VariSkill-frontend/releases/tag/v3.0.0)
 
 <br>
 
